@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AlertService , AuthenticationService } from '../services/index';
+import { AuthenticationService } from '../services/index';
 
 @Component({
     selector: 'login-component',
-    templateUrl: 'login.component.html'
+    templateUrl: 'login.component.html',
+    styleUrls: ['login.component.css']
 })
  
 export class LoginComponent implements OnInit {
@@ -14,11 +15,9 @@ export class LoginComponent implements OnInit {
  
     constructor(private authenticationService: AuthenticationService,
                 private route: ActivatedRoute,
-                private router: Router,
-                private alertService: AlertService) { }
+                private router: Router
+                ) { }
  
-    clicks: number = 0;
-
     ngOnInit() {
        
     }
@@ -32,11 +31,8 @@ login() {
                 },
                 error => {
                       console.log("errror")
-                    this.alertService.error(error);
                     this.loading = false;
                 });
-
-
 
     }
 
@@ -46,7 +42,6 @@ login() {
                console.log("a")
            },
           error =>{
-                    this.alertService.error(error);
                     this.loading = false;
           }
         );
