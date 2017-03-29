@@ -28,6 +28,7 @@ import {  AlertService,AuthenticationService} from './services/index';
 import {ButtonModule} from 'primeng/primeng';
 import {InputTextModule} from 'primeng/primeng';
 import {PasswordModule} from 'primeng/primeng';
+import {SlideMenuModule,MenuItem} from 'primeng/primeng';
 
 @NgModule({
   declarations: [

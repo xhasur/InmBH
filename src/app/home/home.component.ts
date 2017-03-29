@@ -1,12 +1,37 @@
 import {Component } from '@angular/core';
+import {SlideMenuModule,MenuItem} from 'primeng/primeng';
 
 @Component({
     selector :'home-component',
-    template: `
-        <img src="https://secure.static.tumblr.com/adba564a0575cb3ac4af5d28c1654cc5/iennz6v/VQRmww7hh/tumblr_static_tumblr_mdt0v2ocgc1r2i1ka.jpg" />
-        <a routerLink="/">Go Home</a>
-    `
+    templateUrl: 'home.component.html'
 })
 export class HomeComponent{
-    
+    private items: MenuItem[];
+
+    ngOnInit() {
+        this.items = [
+            {
+                label: 'File',
+                items: [{
+                        label: 'New', 
+                        icon: 'fa-plus',
+                        items: [
+                            {label: 'Project'},
+                            {label: 'Other'},
+                        ]
+                    },
+                    {label: 'Open'},
+                    {label: 'Quit'}
+                ]
+            },
+            {
+                label: 'Edit',
+                icon: 'fa-edit',
+                items: [
+                    {label: 'Undo', icon: 'fa-mail-forward'},
+                    {label: 'Redo', icon: 'fa-mail-reply'}
+                ]
+            }
+        ];
+    }
 }
