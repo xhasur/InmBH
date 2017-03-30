@@ -1,22 +1,32 @@
 <div class="col-md-6 col-md-offset-3">
-    <form class="form-register" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+    <form class="form-register" name="form" (ngSubmit)="f.form.valid && save()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+            <label for="name">First Name</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" required />
+            <div *ngIf="f.submitted && !name.valid" class="help-block">Name is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lastname.valid }">
+            <label for="lastname">Last Name</label>
+            <input type="text" class="form-control" name="lastname" [(ngModel)]="model.lastname" #lastname="ngModel" required />
+            <div *ngIf="f.submitted && !lastname.valid" class="help-block">Lastname is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !age.valid }">
+            <label for="age">Age</label>
+            <input type="text" class="form-control" name="age" [(ngModel)]="model.age" #age="ngModel" required />
+            <div *ngIf="f.submitted && !age.valid" class="help-block">Age is required</div>
+        </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-            <label for="username">First Name</label>
+            <label for="username">UserName</label>
             <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
             <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-            <label for="username">Last Name</label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
-            <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-            <label for="username">Age</label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
-            <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !pass.valid }">
+            <label for="test">Password</label>
+            <input type="text" class="form-control" name="test" [(ngModel)]="model.pass" #pass="ngModel" required />
+            <div *ngIf="f.submitted && !pass.valid" class="help-block">Pass is required</div>
         </div>
         <div align="center" class="form-group">
-            <button class="btn btn-primary">Register</button>
+            <button class="btn btn-primary">Save</button>
         </div>
     </form>
 </div>

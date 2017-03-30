@@ -26,11 +26,14 @@ login() {
         this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password).then(
                 data => {
-                    console.log("suvcces")
-                    this.router.navigate(['home']);
+                    if (data != null){
+                        this.router.navigate(['home']);
+                        console.log("succes")
+                    }
+                           this.loading = false;
                 },
                 error => {
-                      console.log("errror")
+                    console.log("errror")
                     this.loading = false;
                 });
 

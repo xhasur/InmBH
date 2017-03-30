@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../services/index';
+import { AuthenticationService , UsersService} from '../services/index';
 
 @Component({
     selector: 'register-component',
@@ -11,6 +11,7 @@ import { AuthenticationService } from '../services/index';
 export class RegisterComponent implements OnInit {
     
     constructor(private authenticationService: AuthenticationService,
+                private usersService: UsersService,
                 private route: ActivatedRoute,
                 private router: Router
                 ) { }
@@ -21,4 +22,17 @@ export class RegisterComponent implements OnInit {
        
     }
  
+    save():void{
+     this.usersService.saveUser(this.model.name,this.model.lastname, this.model.age,this.model.username,this.model.pass).then(
+                data => {
+                    console.log("succes")
+                },
+                error => {
+                      console.log("error")
+                });
+ 
+}
+
+
+
 }

@@ -1,4 +1,4 @@
-import {Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {SlideMenuModule,MenuItem} from 'primeng/primeng';
 
 @Component({
@@ -6,7 +6,18 @@ import {SlideMenuModule,MenuItem} from 'primeng/primeng';
     templateUrl: 'home.component.html',
     styleUrls: ['home.component.css']
 })
-export class HomeComponent{
+export class HomeComponent implements OnInit{
     
+  menu:string = "login";
+
+
+  viewContainer(page :string):boolean{
+      this.menu = page;
+      return false;
+  }
+
+    ngOnInit() {
+       this.menu = 'dashboard'; 
+    }
 
 }
