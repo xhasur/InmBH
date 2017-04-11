@@ -6,35 +6,47 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
  
 @Injectable()
-export class AuthenticationService {
+export class UsersService {
     constructor(private http: Http) { }
  
     urlBackEnd = "http://localhost:3000/";
-
-    login(username: string, password: string) {
-        return this.http.post(this.urlBackEnd +'getUser', 
-
-                                { 
-                                    'username': username, 
-                                    'password': password 
-                                })
+ 
+ 
+ getUsers() {
+        return this.http.get(this.urlBackEnd +'getUsers')
              .toPromise()
                 .then(this.extractData)
                 .catch(this.handleError);
-            /*
-            .map((response: Response) => {
-                // login successful if there's a jwt token in the response
-                let user = response.json();
-                if (user && user.token) {
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                }
-            });*/
     }
  
-    logout() {
-        localStorage.removeItem('currentUser');
+   
+ getUser(userName:string, password: string):Promise<any[]>{
+        return this.http.post(this.urlBackEnd +'getUser',
+            { 
+               'username': userName,
+               'password': password
+            
+            }
+               )
+                 .toPromise()
+                .then(this.extractData)
+                .catch(this.handleError);
     }
+
+ saveUser(name:string, lastname:string, age:string , username:string, password:string):Promise<any[]>{
+      console.log("service")
+      return this.http.post(this.urlBackEnd+'saveUsers',
+                 {
+                   'name': name,
+                   'lastname': lastname,
+                   'age': age,
+                   'username': username,
+                   'password': password,  
+                })
+                .toPromise()
+                .then(this.extractData)
+                .catch(this.handleError);
+  }
 
     private extractData(res: Response) {
         let body = res.json();

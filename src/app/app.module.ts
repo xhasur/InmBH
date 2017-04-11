@@ -13,22 +13,44 @@ import { PageNotFoundComponent } from './pageNotFoun/page.not.found.component';
 //login component
 import{LoginComponent} from './login/login.component'
 
+//register component
+import{RegisterComponent} from './register/register.component'
+
 //home component
 import{HomeComponent} from './home/home.component'
+
+//dashboard component
+import{DashBoardComponent} from './dashboard/dashboard.component'
+
+//about component
+import{AboutComponent} from './about/about.component'
+
+//about component
+import{ListUsersComponent} from './users/list/list.users.component'
+
 
 //routes 
 import { RouterModule, Routes } from '@angular/router';
 import { APPROUTER } from './commons/router';
 
 //services
-import {  AlertService,AuthenticationService} from './services/index';
+import {  AuthenticationService , UsersService} from './services/index';
 
+//material
+//import { MaterialModule } from '@angular/material';
+//import 'hammerjs';
+
+//boostrap
+//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 //ngModules
+
 import {ButtonModule} from 'primeng/primeng';
 import {InputTextModule} from 'primeng/primeng';
 import {PasswordModule} from 'primeng/primeng';
 import {SlideMenuModule,MenuItem} from 'primeng/primeng';
+import {DataTableModule,SharedModule} from 'primeng/primeng';
+
 
 @NgModule({
   declarations: [
@@ -36,9 +58,15 @@ import {SlideMenuModule,MenuItem} from 'primeng/primeng';
     InitComponent,
     PageNotFoundComponent,
     LoginComponent,
+    RegisterComponent,
     HomeComponent,
+    DashBoardComponent,
+    AboutComponent,
+    ListUsersComponent,
   ],
   imports: [
+    DataTableModule,
+    SharedModule,
     ButtonModule,
     InputTextModule,
     PasswordModule,
@@ -49,8 +77,7 @@ import {SlideMenuModule,MenuItem} from 'primeng/primeng';
     RouterModule.forRoot(APPROUTER),
   ],
   providers: [
-    AlertService,
-    AuthenticationService,
+    AuthenticationService,UsersService,
   ],
   bootstrap: [InitComponent]
 })

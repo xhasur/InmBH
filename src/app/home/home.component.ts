@@ -1,37 +1,23 @@
-import {Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {SlideMenuModule,MenuItem} from 'primeng/primeng';
 
 @Component({
     selector :'home-component',
-    templateUrl: 'home.component.html'
+    templateUrl: 'home.component.html',
+    styleUrls: ['home.component.css']
 })
-export class HomeComponent{
-    private items: MenuItem[];
+export class HomeComponent implements OnInit{
+    
+  menu:string = "login";
+
+
+  viewContainer(page :string):boolean{
+      this.menu = page;
+      return false;
+  }
 
     ngOnInit() {
-        this.items = [
-            {
-                label: 'File',
-                items: [{
-                        label: 'New', 
-                        icon: 'fa-plus',
-                        items: [
-                            {label: 'Project'},
-                            {label: 'Other'},
-                        ]
-                    },
-                    {label: 'Open'},
-                    {label: 'Quit'}
-                ]
-            },
-            {
-                label: 'Edit',
-                icon: 'fa-edit',
-                items: [
-                    {label: 'Undo', icon: 'fa-mail-forward'},
-                    {label: 'Redo', icon: 'fa-mail-reply'}
-                ]
-            }
-        ];
+       this.menu = 'dashboard'; 
     }
+
 }
